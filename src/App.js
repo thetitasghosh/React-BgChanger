@@ -1,27 +1,24 @@
+import { useState } from 'react';
 import './App.css';
 
 function App() {
+  const [color, setColor] = useState("lightblue")
+  const Color = [
+      {colname:"red",colcode:"#FF0000"},
+      {colname:"green",colcode:"#00FF00"},
+      {colname:"blue",colcode:"#0000FF"},
+  ]
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src="Octocat.png" className="App-logo" alt="logo" />
-        <p>
-          GitHub Codespaces <span className="heart">♥️</span> React
-        </p>
-        <p className="small">
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </p>
-      </header>
+    <div className="App"
+      style={{ backgroundColor: color }}
+    >
+      <div className='Bar'>
+      {
+        Color.map((col,id)=>{
+          return <button key={id} onClick={()=>setColor(col.colcode)}>{col.colname}</button>
+        })
+      }
+      </div>
     </div>
   );
 }
